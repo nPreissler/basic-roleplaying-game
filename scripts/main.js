@@ -34,12 +34,15 @@ let enemiesObject = [
 ]
 
 function sortEnemie() {
-    return enemiesObject[Math.floor(Math.random() * enemiesObject.length)]
+    return enemiesObject[Math.floor(Math.random() * enemiesObject.length)];
 }
 
-const sortedEnemie = sortEnemie()
+const sortedEnemie = sortEnemie();
 
 function sortAttack() {
-    return sortedEnemie.attacks[Math.floor(Math.random() * sortedEnemie.attacks.length)]
+    const attackKeys = Object.keys(sortedEnemie.attacks); 
+    const randomKey = attackKeys[Math.floor(Math.random() * attackKeys.length)];
+    return { [randomKey]: sortedEnemie.attacks[attackKeys] };
 }
 
+const sortedAttack = sortAttack()

@@ -42,7 +42,7 @@ const sortedEnemie = sortEnemie();
 function sortAttack() {
     const attackKeys = Object.keys(sortedEnemie.attacks); 
     const randomKey = attackKeys[Math.floor(Math.random() * attackKeys.length)];
-    return { [randomKey]: sortedEnemie.attacks[attackKeys] };
+    return {attack: randomKey, dano: sortedEnemie.attacks[randomKey]};
 }
 
 const sortedAttack = sortAttack()

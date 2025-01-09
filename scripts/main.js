@@ -73,24 +73,26 @@ let playerInfo = [
 
 //gameflow
 
-document.querySelectorAll('#option').forEach(button => {
+document.querySelectorAll('#option').forEach(button => { //evento que captura o valor selecionado pelo usuário
     button.addEventListener('click', (event) => {
         const value = event.target.dataset.value;
         console.log(`Attack = ${value}`)
-        if (value == 'kick'){
-                 console.log(playerInfo[0].attacks.sword);
-                 newEnemieLife = enemieLife - playerInfo[0].attacks.sword;
-                 enemieLife = newEnemieLife;
-                 console.log(newEnemieLife);
+
+        const attackValues = {
+            sword: playerInfo[0].attacks.sword,
+            kick: playerInfo[0].attacks.kick,
+            punch: playerInfo[0].attacks.punch
+        };
+
+        if (attackValues[value]) {
+            enemieLife -= attackValues[value];
+            console.log(`New Enemy Life: ${enemieLife}`);
+        } else {
+            console.log("Ataque inválido.");
         }
+        
     });
 });
-
-function gameFlow() {
-    if(pass){
-        
-    }
-}
 
 var playerHealth = document.getElementById('playerHealth')
 

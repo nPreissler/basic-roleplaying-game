@@ -6,7 +6,10 @@
 // 1 round for player, 1 for enemy /--> sort for a weak, strong or medium attack
 // if player losts game ask to restart, else the game asks to close or sort enemy again
 
-let enemiesObject = [
+
+// enemie
+
+let enemiesObject = [ //object that contains principal information of enemies in the game, name, attacks, damage per attack... (life isn't listed in this object)
     {
         name: "Dragon",
         attacks: {
@@ -34,15 +37,17 @@ let enemiesObject = [
 ]
 
 function sortEnemie() {
-    return enemiesObject[Math.floor(Math.random() * enemiesObject.length)];
+    return enemiesObject[Math.floor(Math.random() * enemiesObject.length)]; // responsible function for sort the enemie that user will battle with 
 }
 
-const sortedEnemie = sortEnemie();
+const sortedEnemie = sortEnemie(); // variable responsible for keep the sorted value saved in the round
 
-function sortAttack() {
-    const attackKeys = Object.keys(sortedEnemie.attacks); 
-    const randomKey = attackKeys[Math.floor(Math.random() * attackKeys.length)];
-    return {attack: randomKey, dano: sortedEnemie.attacks[randomKey]};
+function sortAttack() { // responsible function for sort attack that enemie will use against the user/player 
+    const attackKeys = Object.keys(sortedEnemie.attacks); // reserve only attacks names in a array 
+    const randomKey = attackKeys[Math.floor(Math.random() * attackKeys.length)]; // sort a key (attack name)
+    return {attack: randomKey, dano: sortedEnemie.attacks[randomKey]}; // return attack name with your damage again 
 }
 
-const sortedAttack = sortAttack()
+const sortedAttack = sortAttack() // variable responsible for keep the sorted value saved in the round
+
+// enemie

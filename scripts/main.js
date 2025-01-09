@@ -9,6 +9,8 @@
 
 // enemie
 
+var enemieLife = 150;
+
 let enemiesObject = [ //object that contains principal information of enemies in the game, name, attacks, damage per attack... (life isn't listed in this object)
     {
         name: "Dragon",
@@ -34,7 +36,7 @@ let enemiesObject = [ //object that contains principal information of enemies in
             punch: 5
         }
     }
-]
+];
 
 function sortEnemie() {
     return enemiesObject[Math.floor(Math.random() * enemiesObject.length)]; // responsible function for sort the enemie that user will battle with 
@@ -51,3 +53,9 @@ function sortAttack() { // responsible function for sort attack that enemie will
 const sortedAttack = sortAttack() // variable responsible for keep the sorted value saved in the round
 
 // enemie
+
+// player
+
+
+
+// player 

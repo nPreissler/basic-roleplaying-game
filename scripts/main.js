@@ -56,6 +56,17 @@ const sortedAttack = sortAttack() // variable responsible for keep the sorted va
 
 // player
 
+var playerLife = 100;
 
+let playerInfo = [
+    {
+        name: 'Guardian',
+        attacks: {
+            sword: 35,
+            kick: 20,
+            punch: 5 
+        }
+    }
+]
 
 // player 

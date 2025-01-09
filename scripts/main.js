@@ -47,10 +47,10 @@ const sortedEnemie = sortEnemie(); // variable responsible for keep the sorted v
 function sortAttack() { // responsible function for sort attack that enemie will use against the user/player 
     const attackKeys = Object.keys(sortedEnemie.attacks); // reserve only attacks names in a array 
     const randomKey = attackKeys[Math.floor(Math.random() * attackKeys.length)]; // sort a key (attack name)
-    return {attack: randomKey, dano: sortedEnemie.attacks[randomKey]}; // return attack name with your damage again 
+    return { attack: randomKey, damage: sortedEnemie.attacks[randomKey] }; // return attack name with your damage again 
 }
 
-const sortedAttack = sortAttack() // variable responsible for keep the sorted value saved in the round
+// const sortedAttack = sortAttack() // variable responsible for keep the sorted value saved in the round
 
 // enemie
 
@@ -64,9 +64,26 @@ let playerInfo = [
         attacks: {
             sword: 35,
             kick: 20,
-            punch: 5 
+            punch: 5
         }
     }
 ]
 
-// player 
+// player
+
+//gameflow
+
+var playerHealth = document.getElementById('playerHealth')
+
+playerHealth.innerHTML = `Health: ${playerLife}`
+
+var enemieHealth = document.getElementById('enemieHealth')
+
+enemieHealth.innerHTML = `Health: ${enemieLife}`
+
+while (playerLife <= 0 || enemieLife <= 0) {
+    sortAttack()
+    console.log(sortAttack())
+}
+
+//gameflow

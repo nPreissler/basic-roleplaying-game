@@ -50,7 +50,7 @@ function sortAttack() { // responsible function for sort attack that enemie will
     return { attack: randomKey, damage: sortedEnemie.attacks[randomKey] }; // return attack name with your damage again 
 }
 
-// const sortedAttack = sortAttack() // variable responsible for keep the sorted value saved in the round
+const sortedAttack = sortAttack() // variable responsible for keep the sorted value saved in the round
 
 // enemie
 
@@ -77,9 +77,14 @@ document.querySelectorAll('#option').forEach(button => {
     button.addEventListener('click', (event) => {
         const value = event.target.dataset.value;
         console.log(`Attack = ${value}`)
-    }
-)
-})
+        if (value == 'kick'){
+                 console.log(playerInfo[0].attacks.sword);
+                 newEnemieLife = enemieLife - playerInfo[0].attacks.sword;
+                 enemieLife = newEnemieLife;
+                 console.log(newEnemieLife);
+        }
+    });
+});
 
 function gameFlow() {
     if(pass){

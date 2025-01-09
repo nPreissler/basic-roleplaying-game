@@ -73,6 +73,20 @@ let playerInfo = [
 
 //gameflow
 
+document.querySelectorAll('#option').forEach(button => {
+    button.addEventListener('click', (event) => {
+        const value = event.target.dataset.value;
+        console.log(`Attack = ${value}`)
+    }
+)
+})
+
+function gameFlow() {
+    if(pass){
+        
+    }
+}
+
 var playerHealth = document.getElementById('playerHealth')
 
 playerHealth.innerHTML = `Health: ${playerLife}`

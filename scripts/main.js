@@ -108,15 +108,32 @@ document.querySelectorAll('#option').forEach(button => { //responsible event for
             if ( enemieLife <= 0) {
                 document.getElementById('gameStatus').innerHTML = 'The enemie is died'
             }
+            if ( playerLife <=0 ) {
+                document.getElementById('gameStatus').innerHTML = 'You died'
+            }
             
         }
         gameOver();
+
+        function enemieTurn() {
+            sortAttack()
+
+            playerLife -= sortedAttack.damage
+            console.log(sortedAttack)
+
+            document.getElementById('playerHealth').innerHTML = `Health: ${playerLife}`
+        }
+        enemieTurn()
+
+        if (playerLife <= 0) {
+            document.getElementById('playerHealth').innerHTML = 'Health: 0'
+        }
     });
 });
 
-var playerHealth = document.getElementById('playerHealth');
+// var playerHealth = document.getElementById('playerHealth');
 
-playerHealth.innerHTML = `Health: ${playerLife}`;
+// playerHealth.innerHTML = `Health: ${playerLife}`;
 
 document.getElementById('enemieName').innerHTML = `${sortedEnemie.name}`
 //gameflow

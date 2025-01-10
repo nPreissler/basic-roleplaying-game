@@ -58,7 +58,7 @@ const sortedAttack = sortAttack() // variable responsible for keep the sorted va
 
 var playerLife = 100;
 
-let playerInfo = [
+let playerInfo = [ // reserves player informations, on same pattern of object "enemiesObject"
     {
         name: 'Guardian',
         attacks: {
@@ -73,7 +73,7 @@ let playerInfo = [
 
 //gameflow
 
-document.querySelectorAll('#option').forEach(button => { //evento que captura o valor selecionado pelo usuário
+document.querySelectorAll('#option').forEach(button => { //responsible event for catch the selected value for user
     button.addEventListener('click', (event) => {
         const value = event.target.dataset.value;
         console.log(`Attack = ${value}`);
@@ -84,24 +84,24 @@ document.querySelectorAll('#option').forEach(button => { //evento que captura o 
             punch: playerInfo[0].attacks.punch
         };
 
-        if (attackValues[value]) {
+        if (attackValues[value]) { // if attack is valid value, descrement the damage from enemie life
             enemieLife -= attackValues[value];
             console.log(`New Enemy Life: ${enemieLife}`);
         } else {
             console.log("Ataque inválido.");
         }
 
-        if (enemieLife < 0 && enemieLife < attackValues[value]) {
+        if (enemieLife < 0 && enemieLife < attackValues[value]) { // only console message
             console.log('enemie is dead');
         }
 
-        var enemieHealth = document.getElementById('enemieHealth');
+        var enemieHealth = document.getElementById('enemieHealth'); // cath an HTML element  
 
         if (enemieLife < 0){
             enemieLife = 0
         }
 
-        enemieHealth.innerHTML = `Health: ${enemieLife}`;
+        enemieHealth.innerHTML = `Health: ${enemieLife}`; // contnuating from line: 98 : --> and live display enemie life 
 
         function gameOver(){
 
@@ -117,9 +117,6 @@ document.querySelectorAll('#option').forEach(button => { //evento que captura o 
 var playerHealth = document.getElementById('playerHealth');
 
 playerHealth.innerHTML = `Health: ${playerLife}`;
-
-// const enemieName = document.getElementById('enemieName')
-// enemieName.innerHTML = `${sortedEnemie[0]}`
 
 document.getElementById('enemieName').innerHTML = `${sortedEnemie.name}`
 //gameflow

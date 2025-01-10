@@ -76,7 +76,7 @@ let playerInfo = [
 document.querySelectorAll('#option').forEach(button => { //evento que captura o valor selecionado pelo usuário
     button.addEventListener('click', (event) => {
         const value = event.target.dataset.value;
-        console.log(`Attack = ${value}`)
+        console.log(`Attack = ${value}`);
 
         const attackValues = {
             sword: playerInfo[0].attacks.sword,
@@ -91,9 +91,13 @@ document.querySelectorAll('#option').forEach(button => { //evento que captura o 
             console.log("Ataque inválido.");
         }
 
-        if(enemieLife < 0 && enemieLife < attackValues[value]){
+        if (enemieLife < 0 && enemieLife < attackValues[value]) {
             console.log('enemie is dead');
         }
+
+        var enemieHealth = document.getElementById('enemieHealth');
+
+        enemieHealth.innerHTML = `Health: ${enemieLife}`;
         
     });
 });
@@ -101,14 +105,5 @@ document.querySelectorAll('#option').forEach(button => { //evento que captura o 
 var playerHealth = document.getElementById('playerHealth');
 
 playerHealth.innerHTML = `Health: ${playerLife}`;
-
-var enemieHealth = document.getElementById('enemieHealth');
-
-enemieHealth.innerHTML = `Health: ${enemieLife}`;
-
-while (playerLife <= 0 || enemieLife <= 0) {
-    sortAttack();
-    console.log(sortAttack())
-};
 
 //gameflow

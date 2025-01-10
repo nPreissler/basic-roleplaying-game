@@ -97,7 +97,12 @@ document.querySelectorAll('#option').forEach(button => { //evento que captura o 
 
         var enemieHealth = document.getElementById('enemieHealth');
 
+        if (enemieLife < 0){
+            enemieLife = 0
+        }
+
         enemieHealth.innerHTML = `Health: ${enemieLife}`;
+
         function gameOver(){
 
             if ( enemieLife <= 0) {

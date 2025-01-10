@@ -9,7 +9,7 @@
 
 // enemie
 
-var enemieLife = 150;
+var enemieLife = 120;
 
 let enemiesObject = [ //object that contains principal information of enemies in the game, name, attacks, damage per attack... (life isn't listed in this object)
     {
@@ -107,9 +107,12 @@ document.querySelectorAll('#option').forEach(button => { //responsible event for
 
             if (enemieLife <= 0) {
                 document.getElementById('gameStatus').innerHTML = 'The enemie is died'
-            }
-            if (playerLife <= 0) {
+            } else if (playerLife <= 0) {
                 document.getElementById('gameStatus').innerHTML = 'You died'
+            }
+
+            if (enemieLife <= 0 && playerLife <= 0){
+                document.getElementById('gameStatus').innerHTML = 'Draw'
             }
 
         }

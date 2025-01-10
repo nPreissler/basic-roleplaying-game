@@ -97,31 +97,35 @@ document.querySelectorAll('#option').forEach(button => { //responsible event for
 
         var enemieHealth = document.getElementById('enemieHealth'); // cath an HTML element  
 
-        if (enemieLife < 0){
+        if (enemieLife < 0) {
             enemieLife = 0
         }
 
         enemieHealth.innerHTML = `Health: ${enemieLife}`; // contnuating from line: 98 : --> and live display enemie life 
 
-        function gameOver(){
+        function gameOver() {
 
-            if ( enemieLife <= 0) {
+            if (enemieLife <= 0) {
                 document.getElementById('gameStatus').innerHTML = 'The enemie is died'
             }
-            if ( playerLife <=0 ) {
+            if (playerLife <= 0) {
                 document.getElementById('gameStatus').innerHTML = 'You died'
             }
-            
+
         }
         gameOver();
 
         function enemieTurn() {
-            sortAttack()
+            const sortedAttack = sortAttack(); // Sorteia um novo ataque do inimigo
+            console.log(`Enemy Attack: ${sortedAttack.attack}, Damage: ${sortedAttack.damage}`);
 
-            playerLife -= sortedAttack.damage
-            console.log(sortedAttack)
+            playerLife -= sortedAttack.damage;
+            if (playerLife < 0) {
+                playerLife = 0;
+            }
 
-            document.getElementById('playerHealth').innerHTML = `Health: ${playerLife}`
+            document.getElementById('playerHealth').innerHTML = `Health: ${playerLife}`;
+            gameOver(); // Verificar novamente se o jogo terminou
         }
         enemieTurn()
 

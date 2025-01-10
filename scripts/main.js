@@ -50,7 +50,7 @@ function sortAttack() { // responsible function for sort attack that enemie will
     return { attack: randomKey, damage: sortedEnemie.attacks[randomKey] }; // return attack name with your damage again 
 }
 
-const sortedAttack = sortAttack() // variable responsible for keep the sorted value saved in the round
+const sortedAttack = sortAttack(); // variable responsible for keep the sorted value saved in the round
 
 // enemie
 
@@ -67,7 +67,7 @@ let playerInfo = [ // reserves player informations, on same pattern of object "e
             punch: 5
         }
     }
-]
+];
 
 // player
 
@@ -98,7 +98,7 @@ document.querySelectorAll('#option').forEach(button => { //responsible event for
         var enemieHealth = document.getElementById('enemieHealth'); // cath an HTML element  
 
         if (enemieLife < 0) {
-            enemieLife = 0
+            enemieLife = 0; // turn impossible enemie health/life be less then zero
         }
 
         enemieHealth.innerHTML = `Health: ${enemieLife}`; // contnuating from line: 98 : --> and live display enemie life 
@@ -106,41 +106,38 @@ document.querySelectorAll('#option').forEach(button => { //responsible event for
         function gameOver() {
 
             if (enemieLife <= 0) {
-                document.getElementById('gameStatus').innerHTML = 'The enemie is died'
+                document.getElementById('gameStatus').innerHTML = 'The enemie is died';
             } else if (playerLife <= 0) {
-                document.getElementById('gameStatus').innerHTML = 'You died'
+                document.getElementById('gameStatus').innerHTML = 'You died';
             }
 
             if (enemieLife <= 0 && playerLife <= 0){
-                document.getElementById('gameStatus').innerHTML = 'Draw'
+                document.getElementById('gameStatus').innerHTML = 'Draw';
             }
 
         }
         gameOver();
 
         function enemieTurn() {
-            const sortedAttack = sortAttack(); // Sorteia um novo ataque do inimigo
+            const sortedAttack = sortAttack(); // sort a new enemie attack
             console.log(`Enemy Attack: ${sortedAttack.attack}, Damage: ${sortedAttack.damage}`);
-
+            document.getElementById('turn').innerHTML = `Enemy attack: [ ${sortedAttack.attack}, Damage: ${sortedAttack.damage} ]`
+            
             playerLife -= sortedAttack.damage;
             if (playerLife < 0) {
-                playerLife = 0;
+                playerLife = 0; // turn impossible player health/life be less then zero
             }
 
             document.getElementById('playerHealth').innerHTML = `Health: ${playerLife}`;
-            gameOver(); // Verificar novamente se o jogo terminou
+            gameOver(); // verify if game ends
         }
-        enemieTurn()
+        enemieTurn();
 
         if (playerLife <= 0) {
-            document.getElementById('playerHealth').innerHTML = 'Health: 0'
+            document.getElementById('playerHealth').innerHTML = 'Health: 0'; // turn impossible player health/life be less then zero
         }
     });
 });
 
-// var playerHealth = document.getElementById('playerHealth');
-
-// playerHealth.innerHTML = `Health: ${playerLife}`;
-
-document.getElementById('enemieName').innerHTML = `${sortedEnemie.name}`
+document.getElementById('enemieName').innerHTML = `${sortedEnemie.name}`;
 //gameflow

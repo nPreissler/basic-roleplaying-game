@@ -98,7 +98,14 @@ document.querySelectorAll('#option').forEach(button => { //evento que captura o 
         var enemieHealth = document.getElementById('enemieHealth');
 
         enemieHealth.innerHTML = `Health: ${enemieLife}`;
-        
+        function gameOver(){
+
+            if ( enemieLife <= 0) {
+                document.getElementById('gameStatus').innerHTML = 'The enemie is died'
+            }
+            
+        }
+        gameOver();
     });
 });
 

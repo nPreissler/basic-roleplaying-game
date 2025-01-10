@@ -118,4 +118,8 @@ var playerHealth = document.getElementById('playerHealth');
 
 playerHealth.innerHTML = `Health: ${playerLife}`;
 
+// const enemieName = document.getElementById('enemieName')
+// enemieName.innerHTML = `${sortedEnemie[0]}`
+
+document.getElementById('enemieName').innerHTML = `${sortedEnemie.name}`
 //gameflow

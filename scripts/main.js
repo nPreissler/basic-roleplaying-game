@@ -90,21 +90,25 @@ document.querySelectorAll('#option').forEach(button => { //evento que captura o 
         } else {
             console.log("Ataque inválido.");
         }
+
+        if(enemieLife < 0 && enemieLife < attackValues[value]){
+            console.log('enemie is dead');
+        }
         
     });
 });
 
-var playerHealth = document.getElementById('playerHealth')
+var playerHealth = document.getElementById('playerHealth');
 
-playerHealth.innerHTML = `Health: ${playerLife}`
+playerHealth.innerHTML = `Health: ${playerLife}`;
 
-var enemieHealth = document.getElementById('enemieHealth')
+var enemieHealth = document.getElementById('enemieHealth');
 
-enemieHealth.innerHTML = `Health: ${enemieLife}`
+enemieHealth.innerHTML = `Health: ${enemieLife}`;
 
 while (playerLife <= 0 || enemieLife <= 0) {
-    sortAttack()
+    sortAttack();
     console.log(sortAttack())
-}
+};
 
 //gameflow

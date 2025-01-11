@@ -111,7 +111,7 @@ document.querySelectorAll('#option').forEach(button => { //responsible event for
                 document.getElementById('gameStatus').innerHTML = 'You died';
             }
 
-            if (enemieLife <= 0 && playerLife <= 0){
+            if (enemieLife <= 0 && playerLife <= 0) {
                 document.getElementById('gameStatus').innerHTML = 'Draw';
             }
 
@@ -122,8 +122,9 @@ document.querySelectorAll('#option').forEach(button => { //responsible event for
             const sortedAttack = sortAttack(); // sort a new enemie attack
             console.log(`Enemy Attack: ${sortedAttack.attack}, Damage: ${sortedAttack.damage}`);
             document.getElementById('turn').innerHTML = `Enemy attack: [ ${sortedAttack.attack}, Damage: ${sortedAttack.damage} ]`
-            
+
             playerLife -= sortedAttack.damage;
+
             if (playerLife < 0) {
                 playerLife = 0; // turn impossible player health/life be less then zero
             }
@@ -131,7 +132,9 @@ document.querySelectorAll('#option').forEach(button => { //responsible event for
             document.getElementById('playerHealth').innerHTML = `Health: ${playerLife}`;
             gameOver(); // verify if game ends
         }
-        enemieTurn();
+        setTimeout(() => {
+            enemieTurn();
+        }, 1000)
 
         if (playerLife <= 0) {
             document.getElementById('playerHealth').innerHTML = 'Health: 0'; // turn impossible player health/life be less then zero

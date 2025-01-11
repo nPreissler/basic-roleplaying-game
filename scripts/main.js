@@ -11,7 +11,7 @@
 const gameDisplay = document.getElementById('gameDisplay') // getting html element (game display)
 
 const endGame = document.getElementById('endGame')
-function reloadPage(){
+function reloadPage() {
     location.reload();
 }
 
@@ -145,9 +145,24 @@ document.querySelectorAll('#option').forEach(button => { //responsible event for
             document.getElementById('playerHealth').innerHTML = `Health: ${playerLife}`;
             gameOver(); // verify if game ends
         }
+ 
         setTimeout(() => {
             enemieTurn();
         }, 1000)
+        
+        const attacksAction = document.querySelectorAll('#option');
+
+        attacksAction.forEach(button => {
+            button.addEventListener('click', () => {
+                // Desativa todos os botões
+                attacksAction.forEach(btn => btn.disabled = true);
+
+                setTimeout(() => {
+                    // Reativa todos os botões após 2 segundos
+                    attacksAction.forEach(btn => btn.disabled = false);
+                }, 2000);
+            });
+        });
 
         if (playerLife <= 0) {
             document.getElementById('playerHealth').innerHTML = 'Health: 0'; // turn impossible player health/life be less then zero

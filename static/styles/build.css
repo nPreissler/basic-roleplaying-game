@@ -969,14 +969,22 @@ video {
   color: hsla(0, 0%, 100%, 0.9) !important;
 }
 
-body {
-  line-height: inherit;
-  padding: 24px;
-  display: flex;
-  flex-direction: column;
-  min-width: 100vw;
-  min-height: 100vh;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(135deg, #ffffff, #d4d4d4);
+.progress-bar-container {
+  width: 100%;
+  background-color: #f3f3f3;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid #ccc;
+  height: 25px;
+  margin: 10px 0;
+}
+
+.progress-bar {
+  height: 100%;
+  background-color: #4d7fff;
+  text-align: center;
+  color: white;
+  line-height: 25px;
+  font-weight: bold;
+  transition: width 0.3s ease-in-out; 
 }

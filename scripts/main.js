@@ -99,18 +99,24 @@ document.querySelectorAll('#option').forEach(button => { // responsible event to
 
         function gameOver() {
             if (enemieLife <= 0) {
-                document.getElementById('gameStatus').innerHTML = 'The enemy is dead';
-                gameDisplay.style.display = 'none';
-                endGame.style.display = 'flex';
-                document.getElementById('finishStatus').innerHTML = 'You won';
+                setTimeout(() => {
+                    document.getElementById('gameStatus').innerHTML = 'The enemy is dead';
+                    gameDisplay.style.display = 'none';
+                    endGame.style.display = 'flex';
+                    document.getElementById('finishStatus').innerHTML = 'You won';
+                }, 2000)
             } else if (playerLife <= 0) {
-                document.getElementById('gameStatus').innerHTML = 'You died';
-                endGame.style.display = 'flex';
-                gameDisplay.style.display = 'none';
+                setTimeout(() => {
+                    document.getElementById('gameStatus').innerHTML = 'You died';
+                    endGame.style.display = 'flex';
+                    gameDisplay.style.display = 'none';
+                }, 2000);
             }
 
             if (enemieLife <= 0 && playerLife <= 0) {
-                document.getElementById('gameStatus').innerHTML = 'Draw';
+                setTimeout(() => {
+                    document.getElementById('gameStatus').innerHTML = 'Draw';
+                }, 2000);
             }
         }
         gameOver();

@@ -169,12 +169,5 @@ project/
 
 ---
 
-## Future Improvements
-- Add multiple player characters.
-- Implement more complex attack patterns for enemies.
-- Create additional victory conditions and difficulty levels.
-
----
-
 Enjoy the game and have fun coding!
 

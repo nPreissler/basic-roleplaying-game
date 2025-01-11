@@ -1,12 +1,3 @@
-// sort a enemy in a list 
-// sort attacks in a list
-// /--> 1 medium, 1 stronger, 1 weak
-
-// start a fight
-// 1 round for player, 1 for enemy /--> sort for a weak, strong or medium attack
-// if player losts game ask to restart, else the game asks to close or sort enemy again
-
-
 // enemy
 const gameDisplay = document.getElementById('gameDisplay'); // getting HTML element (game display)
 
@@ -99,21 +90,42 @@ document.querySelectorAll('#option').forEach(button => { // responsible event to
 
         function gameOver() {
             if (enemieLife <= 0) {
-                document.getElementById('gameStatus').innerHTML = 'The enemy is dead';
-                gameDisplay.style.display = 'none';
-                endGame.style.display = 'flex';
-                document.getElementById('finishStatus').innerHTML = 'You won';
+                setTimeout(() => {
+                    document.getElementById('gameStatus').innerHTML = 'The enemy is dead';
+                    gameDisplay.style.display = 'none';
+                    endGame.style.display = 'flex';
+                    document.getElementById('finishStatus').innerHTML = 'You won';
+                }, 2000)
             } else if (playerLife <= 0) {
-                document.getElementById('gameStatus').innerHTML = 'You died';
-                endGame.style.display = 'flex';
-                gameDisplay.style.display = 'none';
+                setTimeout(() => {
+                    document.getElementById('gameStatus').innerHTML = 'You died';
+                    endGame.style.display = 'flex';
+                    gameDisplay.style.display = 'none';
+                }, 2000);
             }
 
             if (enemieLife <= 0 && playerLife <= 0) {
-                document.getElementById('gameStatus').innerHTML = 'Draw';
+                setTimeout(() => {
+                    document.getElementById('gameStatus').innerHTML = 'Draw';
+                }, 2000);
             }
         }
         gameOver();
+
+        function updateEnemieHealthBar() {
+            const enemieHealthBar = document.getElementById('enemieHealthBar');
+            
+            const maxHealth = 120; // enemie max health
+            const healthPercentage = (enemieLife / maxHealth) * 100; // calculate the percentage
+            
+            enemieHealthBar.style.width = `${healthPercentage}%`; // update the bar width
+            
+            if (enemieLife <= 0) {
+                enemieHealthBar.style.width = `0%`; 
+            }
+        }
+
+        updateEnemieHealthBar();
 
         function enemieTurn() {
             const sortedAttack = sortAttack(); // sort a new enemy attack
@@ -134,14 +146,16 @@ document.querySelectorAll('#option').forEach(button => { // responsible event to
 
         // Disable buttons immediately to prevent multiple clicks
         attacksAction.forEach(btn => btn.disabled = true);
-
+        attacksAction.forEach(btn => btn.style.background = '#ccc')
+        
         // Enemy turn occurs after 1 second
         setTimeout(() => {
             enemieTurn();
-
+            
             // Re-enable buttons 2 seconds after the player's turn starts
             setTimeout(() => {
                 attacksAction.forEach(btn => btn.disabled = false);
+                attacksAction.forEach(btn => btn.style.background = '#f59e0b')
             }, 1000);
         }, 1000);
 

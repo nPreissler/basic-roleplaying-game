@@ -115,6 +115,21 @@ document.querySelectorAll('#option').forEach(button => { // responsible event to
         }
         gameOver();
 
+        function updateEnemieHealthBar() {
+            const enemieHealthBar = document.getElementById('enemieHealthBar');
+            
+            const maxHealth = 120; // enemie max health
+            const healthPercentage = (enemieLife / maxHealth) * 100; // calculate the percentage
+            
+            enemieHealthBar.style.width = `${healthPercentage}%`; // update the bar width
+            
+            if (enemieLife <= 0) {
+                enemieHealthBar.style.width = `0%`; 
+            }
+        }
+
+        updateEnemieHealthBar();
+
         function enemieTurn() {
             const sortedAttack = sortAttack(); // sort a new enemy attack
             console.log(`Enemy Attack: ${sortedAttack.attack}, Damage: ${sortedAttack.damage}`);

@@ -8,6 +8,11 @@
 
 
 // enemie
+const gameDisplay = document.getElementById('gameDisplay') // getting html element (game display)
+
+const endGame = document.getElementById('endGame')
+
+endGame.style.display = 'none' //setting game over screen to no appear
 
 var enemieLife = 120;
 
@@ -107,8 +112,13 @@ document.querySelectorAll('#option').forEach(button => { //responsible event for
 
             if (enemieLife <= 0) {
                 document.getElementById('gameStatus').innerHTML = 'The enemie is died';
+                gameDisplay.style.display = 'none'
+                endGame.style.display = 'flex'
+                document.getElementById('finishStatus').innerHTML = 'You won'
             } else if (playerLife <= 0) {
                 document.getElementById('gameStatus').innerHTML = 'You died';
+                endGame.style.display = 'flex'
+                gameDisplay.style.display = 'none'
             }
 
             if (enemieLife <= 0 && playerLife <= 0) {

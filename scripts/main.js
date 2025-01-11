@@ -1,12 +1,3 @@
-// sort a enemy in a list 
-// sort attacks in a list
-// /--> 1 medium, 1 stronger, 1 weak
-
-// start a fight
-// 1 round for player, 1 for enemy /--> sort for a weak, strong or medium attack
-// if player losts game ask to restart, else the game asks to close or sort enemy again
-
-
 // enemy
 const gameDisplay = document.getElementById('gameDisplay'); // getting HTML element (game display)
 

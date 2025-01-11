@@ -8,8 +8,16 @@
 
 
 // enemie
+const gameDisplay = document.getElementById('gameDisplay') // getting html element (game display)
 
-var enemieLife = 150;
+const endGame = document.getElementById('endGame')
+function reloadPage(){
+    location.reload();
+}
+
+endGame.style.display = 'none' //setting game over screen to no appear
+
+var enemieLife = 120;
 
 let enemiesObject = [ //object that contains principal information of enemies in the game, name, attacks, damage per attack... (life isn't listed in this object)
     {
@@ -50,7 +58,7 @@ function sortAttack() { // responsible function for sort attack that enemie will
     return { attack: randomKey, damage: sortedEnemie.attacks[randomKey] }; // return attack name with your damage again 
 }
 
-const sortedAttack = sortAttack() // variable responsible for keep the sorted value saved in the round
+const sortedAttack = sortAttack(); // variable responsible for keep the sorted value saved in the round
 
 // enemie
 
@@ -67,7 +75,7 @@ let playerInfo = [ // reserves player informations, on same pattern of object "e
             punch: 5
         }
     }
-]
+];
 
 // player
 
@@ -97,43 +105,55 @@ document.querySelectorAll('#option').forEach(button => { //responsible event for
 
         var enemieHealth = document.getElementById('enemieHealth'); // cath an HTML element  
 
-        if (enemieLife < 0){
-            enemieLife = 0
+        if (enemieLife < 0) {
+            enemieLife = 0; // turn impossible enemie health/life be less then zero
         }
 
         enemieHealth.innerHTML = `Health: ${enemieLife}`; // contnuating from line: 98 : --> and live display enemie life 
 
-        function gameOver(){
+        function gameOver() {
 
-            if ( enemieLife <= 0) {
-                document.getElementById('gameStatus').innerHTML = 'The enemie is died'
+            if (enemieLife <= 0) {
+                document.getElementById('gameStatus').innerHTML = 'The enemie is died';
+                gameDisplay.style.display = 'none'
+                endGame.style.display = 'flex'
+                document.getElementById('finishStatus').innerHTML = 'You won'
+            } else if (playerLife <= 0) {
+                document.getElementById('gameStatus').innerHTML = 'You died';
+                endGame.style.display = 'flex'
+                gameDisplay.style.display = 'none'
             }
-            if ( playerLife <=0 ) {
-                document.getElementById('gameStatus').innerHTML = 'You died'
+
+            if (enemieLife <= 0 && playerLife <= 0) {
+                document.getElementById('gameStatus').innerHTML = 'Draw';
             }
-            
+
         }
         gameOver();
 
         function enemieTurn() {
-            sortAttack()
+            const sortedAttack = sortAttack(); // sort a new enemie attack
+            console.log(`Enemy Attack: ${sortedAttack.attack}, Damage: ${sortedAttack.damage}`);
+            document.getElementById('turn').innerHTML = `Enemy attack: [ ${sortedAttack.attack}, Damage: ${sortedAttack.damage} ]`
 
-            playerLife -= sortedAttack.damage
-            console.log(sortedAttack)
+            playerLife -= sortedAttack.damage;
 
-            document.getElementById('playerHealth').innerHTML = `Health: ${playerLife}`
+            if (playerLife < 0) {
+                playerLife = 0; // turn impossible player health/life be less then zero
+            }
+
+            document.getElementById('playerHealth').innerHTML = `Health: ${playerLife}`;
+            gameOver(); // verify if game ends
         }
-        enemieTurn()
+        setTimeout(() => {
+            enemieTurn();
+        }, 1000)
 
         if (playerLife <= 0) {
-            document.getElementById('playerHealth').innerHTML = 'Health: 0'
+            document.getElementById('playerHealth').innerHTML = 'Health: 0'; // turn impossible player health/life be less then zero
         }
     });
 });
 
-// var playerHealth = document.getElementById('playerHealth');
-
-// playerHealth.innerHTML = `Health: ${playerLife}`;
-
-document.getElementById('enemieName').innerHTML = `${sortedEnemie.name}`
+document.getElementById('enemieName').innerHTML = `${sortedEnemie.name}`;
 //gameflow

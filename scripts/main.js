@@ -11,6 +11,9 @@
 const gameDisplay = document.getElementById('gameDisplay') // getting html element (game display)
 
 const endGame = document.getElementById('endGame')
+function reloadPage(){
+    location.reload();
+}
 
 endGame.style.display = 'none' //setting game over screen to no appear
 
